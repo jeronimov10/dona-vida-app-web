@@ -16,7 +16,7 @@ export default function InicioPage() {
             hoy y agenda tu turno en menos de dos minutos.
           </p>
           <div className="mt-6 flex gap-4">
-            <Button href="/agendar/elegibilidad">Agendar mi donación</Button>
+            <Button href="/agendar">Agendar mi donación</Button>
             <Button href="/requisitos" variant="secondary">
               Ver requisitos
             </Button>
