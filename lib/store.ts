@@ -22,6 +22,21 @@ interface Session {
   email: string | null;
 }
 
+export interface ProfileFieldChange {
+  field: string;
+  before: string;
+  after: string;
+}
+
+const PROFILE_FIELD_LABELS: Partial<Record<keyof DonorProfile, string>> = {
+  name: "Nombre",
+  email: "Correo",
+  phone: "Teléfono",
+  city: "Ciudad",
+  bloodType: "Tipo de sangre",
+  weight: "Peso",
+};
+
 interface AppState {
   session: Session;
   profile: DonorProfile;
@@ -29,15 +44,28 @@ interface AppState {
   turno: Turno | null;
   bookingDraft: BookingDraft;
   reminderActive: boolean;
+  urgentCampaignsOptIn: boolean;
   notificationPrefs: NotificationPrefs;
   recentSearches: RecentSearch[];
   /** Resultado del último envío del cuestionario de la pantalla 15. */
   lastEligibilityCheckPassed: boolean | null;
+  /** Antes/después de la última reprogramación, para la pantalla 27. */
+  lastReprogram: {
+    beforeDateISO: string;
+    beforeTime: string;
+    afterDateISO: string;
+    afterTime: string;
+  } | null;
+  /** Snapshot del turno justo antes de cancelarlo, para la pantalla 29. */
+  lastCancelledTurno: Turno | null;
+  /** Diferencias de la última edición de perfil, para la pantalla 36. */
+  lastProfileChangeAt: number | null;
+  lastProfileChangeFields: ProfileFieldChange[];
 
   login: (email: string) => void;
   logout: () => void;
   registerAccount: (data: { name: string; email: string; phone: string }) => void;
-  updateProfile: (partial: Partial<DonorProfile>) => (keyof DonorProfile)[];
+  updateProfile: (partial: Partial<DonorProfile>) => void;
 
   setBookingDraft: (partial: BookingDraft) => void;
   clearBookingDraft: () => void;
@@ -46,12 +74,10 @@ interface AppState {
 
   confirmTurno: (turno: Omit<Turno, "code" | "reprogramCount">) => Turno;
   cancelTurno: () => void;
-  reprogramTurno: (
-    newDateISO: string,
-    newTime: string,
-  ) => { beforeDateISO: string; beforeTime: string };
+  reprogramTurno: (newDateISO: string, newTime: string) => void;
 
   setReminderActive: (active: boolean) => void;
+  setUrgentCampaignsOptIn: (value: boolean) => void;
   setNotificationPrefs: (partial: Partial<NotificationPrefs>) => void;
 
   addRecentSearch: (search: RecentSearch) => void;
@@ -69,9 +95,14 @@ export const useAppStore = create<AppState>()(
       turno: null,
       bookingDraft: {},
       reminderActive: false,
+      urgentCampaignsOptIn: false,
       notificationPrefs: SEED_NOTIFICATION_PREFS,
       recentSearches: SEED_RECENT_SEARCHES,
       lastEligibilityCheckPassed: null,
+      lastReprogram: null,
+      lastCancelledTurno: null,
+      lastProfileChangeAt: null,
+      lastProfileChangeFields: [],
 
       login: (email) => set({ session: { isLoggedIn: true, email } }),
 
@@ -86,11 +117,21 @@ export const useAppStore = create<AppState>()(
 
       updateProfile: (partial) => {
         const before = get().profile;
-        const changedFields = (Object.keys(partial) as (keyof DonorProfile)[]).filter(
-          (key) => partial[key] !== undefined && partial[key] !== before[key],
-        );
-        set({ profile: { ...before, ...partial } });
-        return changedFields;
+        const changes: ProfileFieldChange[] = (
+          Object.keys(partial) as (keyof DonorProfile)[]
+        )
+          .filter((key) => partial[key] !== undefined && partial[key] !== before[key])
+          .map((key) => ({
+            field: PROFILE_FIELD_LABELS[key] ?? key,
+            before: String(before[key]),
+            after: String(partial[key]),
+          }));
+
+        set({
+          profile: { ...before, ...partial },
+          lastProfileChangeAt: Date.now(),
+          lastProfileChangeFields: changes,
+        });
       },
 
       setBookingDraft: (partial) =>
@@ -115,26 +156,31 @@ export const useAppStore = create<AppState>()(
         return fullTurno;
       },
 
-      cancelTurno: () => set({ turno: null }),
+      cancelTurno: () =>
+        set((state) => ({ turno: null, lastCancelledTurno: state.turno })),
 
       reprogramTurno: (newDateISO, newTime) => {
         const current = get().turno;
-        const beforeDateISO = current?.dateISO ?? newDateISO;
-        const beforeTime = current?.time ?? newTime;
-        if (current) {
-          set({
-            turno: {
-              ...current,
-              dateISO: newDateISO,
-              time: newTime,
-              reprogramCount: current.reprogramCount + 1,
-            },
-          });
-        }
-        return { beforeDateISO, beforeTime };
+        if (!current) return;
+        set({
+          turno: {
+            ...current,
+            dateISO: newDateISO,
+            time: newTime,
+            reprogramCount: current.reprogramCount + 1,
+          },
+          lastReprogram: {
+            beforeDateISO: current.dateISO,
+            beforeTime: current.time,
+            afterDateISO: newDateISO,
+            afterTime: newTime,
+          },
+        });
       },
 
       setReminderActive: (active) => set({ reminderActive: active }),
+
+      setUrgentCampaignsOptIn: (value) => set({ urgentCampaignsOptIn: value }),
 
       setNotificationPrefs: (partial) =>
         set((state) => ({
@@ -147,9 +193,31 @@ export const useAppStore = create<AppState>()(
       clearRecentSearches: () => set({ recentSearches: [] }),
     }),
     {
-      name: "dona-vida-store",
+      // v2: el modelo de datos creció durante el desarrollo (turno,
+      // reprogramaciones, cambios de perfil, etc.). Un valor guardado con
+      // una versión anterior del esquema (de una visita hecha mientras se
+      // construía la app) puede no tener campos que el código actual da
+      // por sentado (p. ej. `profile.birthdateISO`), y provocaría un error
+      // al leerlos. Cambiar la llave de almacenamiento hace que cualquier
+      // dato viejo se ignore en vez de romper la app; `merge` además evita
+      // que un objeto guardado incompleto borre valores por defecto.
+      name: "dona-vida-store-v2",
       storage: createJSONStorage(() => localStorage),
       skipHydration: true,
+      merge: (persisted, current) => {
+        const saved = (persisted as Partial<AppState>) ?? {};
+        return {
+          ...current,
+          ...saved,
+          session: { ...current.session, ...saved.session },
+          profile: { ...current.profile, ...saved.profile },
+          notificationPrefs: {
+            ...current.notificationPrefs,
+            ...saved.notificationPrefs,
+          },
+          bookingDraft: { ...current.bookingDraft, ...saved.bookingDraft },
+        };
+      },
     },
   ),
 );

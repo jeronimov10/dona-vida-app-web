@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* El sistema de diseño del PDF es siempre claro (sección 5.1): forzamos
+   color-scheme para que los controles nativos (select, checkbox, radio)
+   no se rendericen oscuros aunque el sistema operativo esté en modo oscuro. */
+:root {
+  color-scheme: light;
+}
+
 @theme {
   --color-gray-white: #ffffff;
   --color-gray-20: #cccccc;

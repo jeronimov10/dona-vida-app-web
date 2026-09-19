@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -11,6 +11,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Dona Vida",
   description: "Dona Vida — Sitio web para donantes",
+};
+
+export const viewport: Viewport = {
+  colorScheme: "light",
 };
 
 export default function RootLayout({

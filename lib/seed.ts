@@ -221,12 +221,24 @@ export const SEED_REQUISITOS: RequisitoRow[] = [
   },
 ];
 
-/** Escenario fijo que ilustra el PDF para "aún no eres elegible" (pantallas 17 y 31). */
-export const INELIGIBLE_SCENARIO = {
-  daysSince: 82,
-  daysRemaining: 8,
-  nextEligibleDateLabel: "16 de septiembre de 2026",
-};
+/**
+ * Escenario que ilustra el PDF para "aún no eres elegible" (pantallas 17 y
+ * 31): se llega aquí cuando, en el cuestionario de la pantalla 15, no se
+ * marcan las seis casillas. Los números (82 días, faltan 8) son los del
+ * PDF; la fecha se calcula en relación con "hoy" para que nunca quede vieja.
+ */
+export function getIneligibleScenario() {
+  const today = todayISO();
+  const daysSince = 82;
+  const daysRemaining = 8;
+  return {
+    daysSince,
+    daysRemaining,
+    nextEligibleDateISO: addDays(today, daysRemaining),
+  };
+}
 
 /** Fecha semilla, dentro de "Elegir fecha" (18), sin cupos de horario a propósito. */
-export const NO_CAPACITY_DATE_LABEL = "Martes 9 de septiembre";
+export function getNoCapacityDateISO(): string {
+  return addDays(todayISO(), 2);
+}

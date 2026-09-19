@@ -1,11 +1,14 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StoreHydrator } from "@/components/layout/StoreHydrator";
+import { ClientOnly } from "@/components/layout/ClientOnly";
 
 /**
  * Layout compartido por las 38 pantallas: Cabecera y Pie de página
  * persistentes (sección 2 del PDF), con el contenido de cada pantalla en
- * medio.
+ * medio. El contenido va dentro de `ClientOnly` porque casi todas las
+ * pantallas muestran datos derivados de "hoy" y del store; ver el
+ * comentario de `ClientOnly` para el porqué.
  */
 export default function SiteLayout({
   children,
@@ -16,7 +19,9 @@ export default function SiteLayout({
     <div className="flex min-h-screen w-full flex-col">
       <StoreHydrator />
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1">
+        <ClientOnly>{children}</ClientOnly>
+      </main>
       <Footer />
     </div>
   );

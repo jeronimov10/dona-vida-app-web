@@ -90,6 +90,40 @@ export function formatDateShort(iso: string): string {
   return `${date.getDate()} ${MONTHS_SHORT[date.getMonth()]}`;
 }
 
+/** "15 jun 2024" */
+export function formatDateShortYear(iso: string): string {
+  const date = parseISODate(iso);
+  return `${date.getDate()} ${MONTHS_SHORT[date.getMonth()]} ${date.getFullYear()}`;
+}
+
+/** "lunes 8 de septiembre" (minúscula, sin año) */
+export function formatDateWeekdayNoYear(iso: string): string {
+  const date = parseISODate(iso);
+  return `${WEEKDAYS[date.getDay()]} ${date.getDate()} de ${MONTHS[date.getMonth()]}`;
+}
+
+/** "Lunes 8 de septiembre" (con mayúscula inicial, sin año) */
+export function formatDateWeekdayNoYearCap(iso: string): string {
+  return capitalize(formatDateWeekdayNoYear(iso));
+}
+
+/** Edad en años cumplidos a partir de una fecha de nacimiento ISO. */
+export function calculateAge(birthdateISO: string): number {
+  const birth = parseISODate(birthdateISO);
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const hasHadBirthdayThisYear =
+    today.getMonth() > birth.getMonth() ||
+    (today.getMonth() === birth.getMonth() && today.getDate() >= birth.getDate());
+  if (!hasHadBirthdayThisYear) age -= 1;
+  return age;
+}
+
+/** "1.350" (separador de miles al estilo es-CO) */
+export function formatThousands(value: number): string {
+  return value.toLocaleString("es-CO");
+}
+
 /** "marzo de 2024" */
 export function formatMonthYear(iso: string): string {
   const date = parseISODate(iso);

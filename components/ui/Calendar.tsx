@@ -85,7 +85,7 @@ export function Calendar({
             <button
               key={day}
               type="button"
-              disabled={!onSelectDay}
+              disabled={!onSelectDay || !isAvailable}
               onClick={() => onSelectDay?.(day)}
               className={cn(
                 "aspect-square rounded-md text-body",
