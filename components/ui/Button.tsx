@@ -11,12 +11,12 @@ export interface ButtonProps
 }
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-button uppercase transition-colors disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded h-12 px-6 text-button uppercase transition-colors disabled:cursor-not-allowed disabled:opacity-50";
 
 const VARIANTS = {
-  primary: "bg-gray-80 text-gray-white hover:bg-gray-black",
+  primary: "bg-primary text-surface hover:bg-primary-dark",
   secondary:
-    "border border-gray-40 bg-gray-white text-gray-black hover:bg-gray-20/40",
+    "border border-line bg-surface text-ink hover:bg-soft/60",
 };
 
 /**

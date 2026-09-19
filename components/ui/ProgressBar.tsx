@@ -14,12 +14,12 @@ export function ProgressBar({ label, percent, className }: ProgressBarProps) {
   return (
     <div className={className}>
       <div className="flex items-center justify-between">
-        <span className="text-label uppercase text-gray-60">{label}</span>
-        <span className="text-label text-gray-60">{clamped}%</span>
+        <span className="text-label uppercase text-ink-muted">{label}</span>
+        <span className="text-label text-ink-muted">{clamped}%</span>
       </div>
-      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-20">
+      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-soft">
         <div
-          className="h-full rounded-full bg-gray-80"
+          className="h-full rounded-full bg-primary"
           style={{ width: `${clamped}%` }}
         />
       </div>

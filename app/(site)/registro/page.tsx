@@ -82,7 +82,7 @@ export default function RegistroPage() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <p className="text-caption self-end pb-2 text-gray-60">
+            <p className="text-caption self-end pb-2 text-ink-muted">
               Debe incluir al menos una mayúscula y un número.
             </p>
           </div>

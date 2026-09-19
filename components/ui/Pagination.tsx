@@ -29,7 +29,7 @@ export function Pagination({
           aria-label="Página anterior"
           disabled={currentPage <= 1}
           onClick={() => onPageChange(currentPage - 1)}
-          className="h-8 w-8 rounded-md border border-gray-40 text-body text-gray-black disabled:opacity-40"
+          className="h-8 w-8 rounded-md border border-line text-body text-ink disabled:opacity-40"
         >
           ‹
         </button>
@@ -42,8 +42,8 @@ export function Pagination({
             className={cn(
               "h-8 w-8 rounded-md text-body",
               page === currentPage
-                ? "bg-gray-80 text-gray-white"
-                : "text-gray-black hover:bg-gray-20/40",
+                ? "bg-primary text-surface"
+                : "text-ink hover:bg-soft/60",
             )}
           >
             {page}
@@ -54,13 +54,13 @@ export function Pagination({
           aria-label="Página siguiente"
           disabled={currentPage >= totalPages}
           onClick={() => onPageChange(currentPage + 1)}
-          className="h-8 w-8 rounded-md border border-gray-40 text-body text-gray-black disabled:opacity-40"
+          className="h-8 w-8 rounded-md border border-line text-body text-ink disabled:opacity-40"
         >
           ›
         </button>
       </div>
       {rangeLabel && (
-        <span className="text-caption text-gray-60">{rangeLabel}</span>
+        <span className="text-caption text-ink-muted">{rangeLabel}</span>
       )}
     </div>
   );

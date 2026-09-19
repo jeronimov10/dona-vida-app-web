@@ -51,13 +51,13 @@ export default function DetallePuntoPage() {
 
             <div>
               <p className="text-h3">Horario de atención</p>
-              <p className="text-body mt-1 text-gray-60">{point.weekdayHours}</p>
-              <p className="text-body text-gray-60">{point.saturdayHours}</p>
+              <p className="text-body mt-1 text-ink-muted">{point.weekdayHours}</p>
+              <p className="text-body text-ink-muted">{point.saturdayHours}</p>
             </div>
 
             <div>
               <p className="text-h3">Qué llevar</p>
-              <p className="text-body mt-1 text-gray-60">{point.whatToBring}</p>
+              <p className="text-body mt-1 text-ink-muted">{point.whatToBring}</p>
             </div>
 
             {point.urgentBloodType && (

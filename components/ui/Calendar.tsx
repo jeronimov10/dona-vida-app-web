@@ -42,7 +42,7 @@ export function Calendar({
   while (cells.length % 7 !== 0) cells.push(null);
 
   return (
-    <div className={cn("border border-gray-20 p-4", className)}>
+    <div className={cn("rounded-xl border border-soft bg-surface p-4", className)}>
       <div className="flex items-center justify-between">
         <p className="text-h3">{monthLabel}</p>
         <div className="flex gap-2">
@@ -50,7 +50,7 @@ export function Calendar({
             type="button"
             aria-label="Mes anterior"
             onClick={onPrevMonth}
-            className="h-7 w-7 rounded-md border border-gray-40 text-body text-gray-black"
+            className="h-7 w-7 rounded-md border border-line text-body text-ink"
           >
             ‹
           </button>
@@ -58,7 +58,7 @@ export function Calendar({
             type="button"
             aria-label="Mes siguiente"
             onClick={onNextMonth}
-            className="h-7 w-7 rounded-md border border-gray-40 text-body text-gray-black"
+            className="h-7 w-7 rounded-md border border-line text-body text-ink"
           >
             ›
           </button>
@@ -69,7 +69,7 @@ export function Calendar({
         {WEEKDAY_LABELS.map((label, index) => (
           <span
             key={`${label}-${index}`}
-            className="text-caption uppercase text-gray-60"
+            className="text-caption uppercase text-ink-muted"
           >
             {label}
           </span>
@@ -90,10 +90,10 @@ export function Calendar({
               className={cn(
                 "aspect-square rounded-md text-body",
                 isSelected
-                  ? "bg-gray-black text-gray-white"
+                  ? "bg-primary text-surface"
                   : isAvailable
-                    ? "border border-gray-40 text-gray-black hover:bg-gray-20/40"
-                    : "text-gray-60",
+                    ? "border border-line text-ink hover:bg-soft/60"
+                    : "text-ink-muted",
               )}
             >
               {day}

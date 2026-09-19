@@ -1,30 +1,40 @@
 @import "tailwindcss";
 
-/* El sistema de diseño del PDF es siempre claro (sección 5.1): forzamos
-   color-scheme para que los controles nativos (select, checkbox, radio)
-   no se rendericen oscuros aunque el sistema operativo esté en modo oscuro. */
+/* El sistema de diseño es siempre claro: forzamos color-scheme para que los
+   controles nativos (select, checkbox, radio) no se rendericen oscuros
+   aunque el sistema operativo esté en modo oscuro. */
 :root {
   color-scheme: light;
 }
 
 @theme {
-  --color-gray-white: #ffffff;
-  --color-gray-20: #cccccc;
-  --color-gray-40: #999999;
-  --color-gray-60: #666666;
-  --color-gray-80: #333333;
-  --color-gray-black: #000000;
+  /* Paleta del archivo de Figma "Dona Vida · Mockups Web".
+     El nombre de la variable de Figma va como comentario para poder
+     rastrear cada token hasta su origen en el diseño. */
+  --color-primary: #7a1734; /* color/primary */
+  --color-primary-dark: #5e1228; /* hover de primary (derivado) */
+  --color-surface: #ffffff; /* color/surface */
+  --color-background: #f5f2f1; /* color/background */
+  --color-ink: #1f1013; /* color/text-primary */
+  --color-ink-muted: #6b4c55; /* color/text-secondary */
+  --color-soft: #f4dce1; /* color/soft-fill */
+  --color-line: #c98ca0; /* color/border */
+  --color-wash: #faf2f4; /* fondo de notas informativas */
 
   --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+
+  /* Sombras del diseño: siempre teñidas con el vinotinto de marca. */
+  --shadow-card: 0 4px 10px rgba(122, 23, 52, 0.08);
+  --shadow-header: 0 2px 8px rgba(122, 23, 52, 0.07);
 }
 
 body {
-  background: var(--color-gray-white);
-  color: var(--color-gray-black);
+  background: var(--color-background);
+  color: var(--color-ink);
   font-family: var(--font-sans);
 }
 
-/* Escala tipográfica del Design System (sección 5.2 del PDF).
+/* Escala tipográfica del Design System.
    Se definen como clases planas en vez de tokens de Tailwind porque cada
    rol combina tamaño + interlineado + peso, algo que Tailwind v4 no
    modela como una sola utilidad. */
@@ -62,10 +72,45 @@ body {
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
 }
 .text-caption {
   font-size: 12px;
   line-height: 18px;
   font-weight: 400;
+}
+
+/* Barra de identidad bajo la cabecera: degradado vinotinto que se
+   desvanece hacia la derecha. */
+.identity-bar {
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    rgba(122, 23, 52, 0.4) 0%,
+    rgba(122, 23, 52, 0.12) 60%,
+    rgba(122, 23, 52, 0) 100%
+  );
+}
+
+/* Capas decorativas de fondo presentes en todas las pantallas del diseño:
+   un halo vinotinto arriba a la derecha, un resplandor abajo a la izquierda
+   y una textura de puntos. Son puramente ornamentales (aria-hidden) y no
+   capturan eventos del puntero. */
+.decor-halo {
+  background: radial-gradient(
+    circle,
+    rgba(122, 23, 52, 0.07) 0%,
+    rgba(122, 23, 52, 0) 70%
+  );
+}
+.decor-glow {
+  background: radial-gradient(
+    circle,
+    rgba(201, 140, 160, 0.16) 0%,
+    rgba(201, 140, 160, 0) 70%
+  );
+}
+.decor-texture {
+  background-image: radial-gradient(rgba(122, 23, 52, 0.18) 1.2px, transparent 1.2px);
+  background-size: 14px 14px;
 }

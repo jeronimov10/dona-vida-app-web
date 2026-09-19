@@ -17,8 +17,8 @@ export function Chip({ children, active, className, onClick, ...rest }: ChipProp
   const classes = cn(
     "inline-flex items-center rounded-full border px-4 py-1 text-label",
     active
-      ? "border-gray-80 bg-gray-80 text-gray-white"
-      : "border-gray-40 bg-gray-white text-gray-black",
+      ? "border-primary bg-primary text-surface"
+      : "border-line bg-surface text-ink",
     className,
   );
 

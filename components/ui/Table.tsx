@@ -4,11 +4,11 @@ import { cn } from "@/lib/cn";
 /** Tabla - Encabezado: fila de cabecera de una tabla de datos. */
 export function TableHeader({ columns }: { columns: string[] }) {
   return (
-    <tr className="bg-gray-20/40">
+    <tr className="bg-soft/60">
       {columns.map((column) => (
         <th
           key={column}
-          className="px-4 py-3 text-left text-label uppercase text-gray-60"
+          className="px-4 py-3 text-left text-label uppercase text-ink-muted"
         >
           {column}
         </th>
@@ -29,8 +29,8 @@ export function TableRow({
     <tr
       onClick={onClick}
       className={cn(
-        "border-b border-gray-20 text-body text-gray-black",
-        onClick && "cursor-pointer hover:bg-gray-20/20",
+        "border-b border-soft text-body text-ink",
+        onClick && "cursor-pointer hover:bg-soft/40",
       )}
     >
       {cells.map((cell, index) => (
@@ -52,7 +52,7 @@ export interface TableProps {
 /** Tabla: composición estándar de Tabla - Encabezado + Tabla - Fila. */
 export function Table({ columns, rows, onRowClick, className }: TableProps) {
   return (
-    <div className={cn("overflow-x-auto border border-gray-20", className)}>
+    <div className={cn("overflow-x-auto rounded-xl border border-soft bg-surface", className)}>
       <table className="w-full min-w-[560px] border-collapse">
         <thead>
           <TableHeader columns={columns} />

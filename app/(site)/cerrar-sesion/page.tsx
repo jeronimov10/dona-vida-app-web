@@ -20,7 +20,7 @@ export default function CerrarSesionPage() {
     <CenteredCard>
       <div className="text-center">
         <h1 className="text-h1">¿Cerrar sesión?</h1>
-        <p className="text-body mt-2 text-gray-60">
+        <p className="text-body mt-2 text-ink-muted">
           Tendrás que ingresar tu correo y contraseña la próxima vez que
           entres.
         </p>
@@ -37,7 +37,7 @@ export default function CerrarSesionPage() {
         </Button>
       </div>
 
-      <p className="text-caption mt-4 text-center text-gray-60">
+      <p className="text-caption mt-4 text-center text-ink-muted">
         Sesión iniciada como {session.email}
       </p>
     </CenteredCard>

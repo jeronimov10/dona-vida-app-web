@@ -25,7 +25,7 @@ export default function CorreoEnviadoPage() {
     <CenteredCard>
       <div className="text-center">
         <h1 className="text-h1">Revisa tu correo</h1>
-        <p className="text-body mt-2 text-gray-60">
+        <p className="text-body mt-2 text-ink-muted">
           Enviamos un enlace a {sessionEmail ?? "laura.gomez@email.com"}
         </p>
       </div>
@@ -35,7 +35,7 @@ export default function CorreoEnviadoPage() {
         también la carpeta de spam.
       </Banner>
 
-      <p className="text-caption mt-6 text-center text-gray-60">
+      <p className="text-caption mt-6 text-center text-ink-muted">
         {secondsLeft > 0
           ? `¿No te llegó? Podrás reenviarlo en ${countdownLabel}`
           : "¿No te llegó?"}

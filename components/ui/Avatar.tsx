@@ -10,7 +10,7 @@ export function Avatar({
 }) {
   return (
     <span
-      className={cn("inline-block shrink-0 rounded-full bg-gray-20", className)}
+      className={cn("inline-block shrink-0 rounded-full bg-soft", className)}
       style={{ width: size, height: size }}
       aria-hidden="true"
     />

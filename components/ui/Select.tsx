@@ -28,15 +28,15 @@ export function Select({
 
   return (
     <div className={containerClassName}>
-      <label htmlFor={selectId} className="text-label block text-gray-black">
+      <label htmlFor={selectId} className="text-label block text-primary">
         {label}
       </label>
       <div className="relative mt-2">
         <select
           id={selectId}
           className={cn(
-            "w-full appearance-none rounded-md border border-gray-40 bg-gray-white px-3 py-2 pr-8 text-body text-gray-black",
-            "focus:outline-none focus:ring-2 focus:ring-gray-80",
+            "w-full appearance-none rounded-md border border-line bg-surface px-3 py-2 pr-8 text-body text-ink",
+            "focus:outline-none focus:ring-2 focus:ring-primary",
           )}
           {...rest}
         >
@@ -48,7 +48,7 @@ export function Select({
         </select>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-60"
+          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ink-muted"
         >
           ▾
         </span>

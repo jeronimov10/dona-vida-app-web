@@ -20,14 +20,14 @@ export function Checkbox({
     <label
       htmlFor={inputId}
       className={cn(
-        "flex cursor-pointer items-center gap-3 text-body text-gray-black",
+        "flex cursor-pointer items-center gap-3 text-body text-ink",
         containerClassName,
       )}
     >
       <input
         id={inputId}
         type="checkbox"
-        className="h-4 w-4 shrink-0 accent-gray-80"
+        className="h-4 w-4 shrink-0 accent-primary"
         {...rest}
       />
       {label}

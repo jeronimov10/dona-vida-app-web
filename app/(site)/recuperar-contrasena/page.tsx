@@ -20,9 +20,9 @@ export default function RecuperarContrasenaPage() {
 
   return (
     <CenteredCard>
-      <div className="border border-gray-40 p-8">
+      <div className="rounded-xl border border-soft bg-surface p-8 shadow-card">
         <p className="text-h3">Restablece tu contraseña</p>
-        <p className="text-body mt-1 text-gray-60">
+        <p className="text-body mt-1 text-ink-muted">
           Ingresa el correo de tu cuenta y te enviaremos un enlace para crear
           una nueva.
         </p>
@@ -38,7 +38,7 @@ export default function RecuperarContrasenaPage() {
           <Button type="submit" className="w-full">
             Enviar enlace
           </Button>
-          <p className="text-caption text-gray-60">
+          <p className="text-caption text-ink-muted">
             El enlace de recuperación vence a los 30 minutos.
           </p>
         </form>

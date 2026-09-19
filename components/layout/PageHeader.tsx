@@ -14,7 +14,7 @@ export function PageHeader({
   return (
     <Container className="pb-8 pt-2">
       <h1 className="text-h1">{title}</h1>
-      {body && <p className="text-body mt-2 text-gray-60">{body}</p>}
+      {body && <p className="text-body mt-2 text-ink-muted">{body}</p>}
     </Container>
   );
 }

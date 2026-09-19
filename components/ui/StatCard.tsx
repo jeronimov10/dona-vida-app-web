@@ -12,10 +12,10 @@ export interface StatCardProps {
  */
 export function StatCard({ label, value, caption, className }: StatCardProps) {
   return (
-    <div className={cn("border border-gray-20 bg-gray-white p-6", className)}>
-      <p className="text-label uppercase text-gray-60">{label}</p>
+    <div className={cn("rounded-xl border border-soft bg-surface p-6 shadow-card", className)}>
+      <p className="text-label uppercase text-ink-muted">{label}</p>
       <p className="text-h1 mt-2">{value}</p>
-      {caption && <p className="text-caption mt-1 text-gray-60">{caption}</p>}
+      {caption && <p className="text-caption mt-1 text-ink-muted">{caption}</p>}
     </div>
   );
 }

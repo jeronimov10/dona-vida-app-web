@@ -23,19 +23,19 @@ export function TextField({
 
   return (
     <div className={containerClassName}>
-      <label htmlFor={inputId} className="text-label block text-gray-black">
+      <label htmlFor={inputId} className="text-label block text-primary">
         {label}
       </label>
       <input
         id={inputId}
         className={cn(
-          "mt-2 w-full rounded-md border border-gray-40 bg-gray-white px-3 py-2 text-body text-gray-black",
-          "placeholder:text-gray-60 focus:outline-none focus:ring-2 focus:ring-gray-80",
+          "mt-2 w-full rounded-md border border-line bg-surface px-3 py-2 text-body text-ink",
+          "placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-primary",
         )}
         {...rest}
       />
       {helperText && (
-        <p className="text-caption mt-1 text-gray-60">{helperText}</p>
+        <p className="text-caption mt-1 text-ink-muted">{helperText}</p>
       )}
     </div>
   );

@@ -29,7 +29,7 @@ export default function ErrorConexionPage() {
 
         <div>
           <p className="text-h2 mb-4">Qué puedes hacer</p>
-          <ol className="flex list-decimal flex-col gap-2 pl-5 text-body text-gray-black">
+          <ol className="flex list-decimal flex-col gap-2 pl-5 text-body text-ink">
             {STEPS.map((step) => (
               <li key={step}>{step}</li>
             ))}

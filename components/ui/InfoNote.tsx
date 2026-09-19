@@ -1,9 +1,12 @@
 import { ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { IconInfo } from "@/components/icons";
 
 /**
- * Nota informativa: texto de apoyo con un borde izquierdo delgado, usada al
- * final de casi todos los formularios y pantallas de resultado.
+ * Nota informativa (componente "Web/Nota informativa"): texto de apoyo sobre
+ * un fondo rosado muy claro, con una barra vinotinto de 4px en el borde
+ * izquierdo. Se usa al final de casi todos los formularios y pantallas de
+ * resultado.
  */
 export function InfoNote({
   children,
@@ -15,11 +18,12 @@ export function InfoNote({
   return (
     <p
       className={cn(
-        "border-l-2 border-gray-40 pl-4 text-body text-gray-black",
+        "flex items-start gap-3 rounded-[10px] border-l-4 border-primary bg-wash py-3 pl-5 pr-6 text-body text-ink-muted",
         className,
       )}
     >
-      {children}
+      <IconInfo className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+      <span>{children}</span>
     </p>
   );
 }

@@ -1,5 +1,11 @@
 import Link from "next/link";
 import { Container } from "./Container";
+import {
+  IconGotaOutline,
+  IconHeart,
+  IconMail,
+  IconPhone,
+} from "@/components/icons";
 
 const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
@@ -31,14 +37,17 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
  */
 export function Footer() {
   return (
-    <footer className="mt-auto w-full border-t border-gray-20">
+    <footer className="mt-auto w-full border-t border-soft bg-gradient-to-b from-surface to-[#faf0f2]">
       <Container className="flex flex-col gap-8 py-10 sm:flex-row sm:justify-between">
         <div>
-          <p className="text-h3">Dona Vida</p>
-          <p className="text-caption text-gray-60">
+          <p className="text-h3 flex items-center gap-2">
+            <IconGotaOutline className="h-6 w-6 text-primary" />
+            Dona Vida
+          </p>
+          <p className="text-caption text-ink-muted">
             Red Nacional de Bancos de Sangre
           </p>
-          <p className="text-caption mt-6 text-gray-60">
+          <p className="text-caption mt-6 text-ink-muted">
             © 2026 Dona Vida · Proyecto académico UX/UI
           </p>
         </div>
@@ -46,7 +55,7 @@ export function Footer() {
         <div className="flex flex-col gap-8 sm:flex-row sm:gap-16">
           {COLUMNS.map((column) => (
             <div key={column.title}>
-              <p className="text-label uppercase text-gray-60">
+              <p className="text-label uppercase text-primary">
                 {column.title}
               </p>
               <ul className="mt-3 flex flex-col gap-2">
@@ -54,7 +63,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-body text-gray-black hover:text-gray-60"
+                      className="text-body text-ink hover:text-primary"
                     >
                       {link.label}
                     </Link>
@@ -64,6 +73,11 @@ export function Footer() {
             </div>
           ))}
         </div>
+      </Container>
+      <Container className="flex justify-end gap-4 pb-8 text-primary">
+        <IconHeart className="h-5 w-5" />
+        <IconMail className="h-5 w-5" />
+        <IconPhone className="h-5 w-5" />
       </Container>
     </footer>
   );

@@ -14,7 +14,7 @@ export interface StepperProps {
 export function Stepper({ step, total, label, className }: StepperProps) {
   return (
     <div className={className}>
-      <p className="text-label uppercase text-gray-60">
+      <p className="text-label uppercase text-ink-muted">
         Paso {step} de {total} · {label}
       </p>
       <div className="mt-2 flex gap-2">
@@ -23,7 +23,7 @@ export function Stepper({ step, total, label, className }: StepperProps) {
             key={index}
             className={cn(
               "h-1.5 flex-1 rounded-full",
-              index < step ? "bg-gray-black" : "bg-gray-20",
+              index < step ? "bg-primary" : "bg-soft",
             )}
           />
         ))}

@@ -33,7 +33,7 @@ export default function ConfirmarTurnoPage() {
     <CenteredCard width="wide">
       <div className="text-center">
         <h1 className="text-h1">¿Confirmas tu turno?</h1>
-        <p className="text-body mt-2 text-gray-60">
+        <p className="text-body mt-2 text-ink-muted">
           {point.name} · {formatDateWeekdayNoYearCap(dateISO)}, {time}
         </p>
       </div>
@@ -54,7 +54,7 @@ export default function ConfirmarTurnoPage() {
         </Button>
       </div>
 
-      <p className="text-caption mt-4 text-center text-gray-60">
+      <p className="text-caption mt-4 text-center text-ink-muted">
         Al confirmar aceptas las políticas del banco de sangre.
       </p>
     </CenteredCard>

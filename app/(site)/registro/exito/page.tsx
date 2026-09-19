@@ -15,7 +15,7 @@ export default function RegistroExitoPage() {
     <>
       <div className="mx-auto max-w-[520px] px-[72px] pt-12 text-center">
         <h1 className="text-h1">¡Bienvenida, {firstName}!</h1>
-        <p className="text-body mt-2 text-gray-60">
+        <p className="text-body mt-2 text-ink-muted">
           Tu cuenta y tu perfil de donante quedaron creados.
         </p>
         <Banner title="Cuenta creada" className="mt-6 text-left">

@@ -17,7 +17,7 @@ export function EmptyState({ title, children, className }: EmptyStateProps) {
     <div className={cn("flex flex-col items-center py-10 text-center", className)}>
       <WideImage className="h-16 w-16" label="Sin resultados" />
       <p className="text-h3 mt-4">{title}</p>
-      <p className="text-body mt-1 text-gray-60">{children}</p>
+      <p className="text-body mt-1 text-ink-muted">{children}</p>
     </div>
   );
 }

@@ -27,7 +27,7 @@ export function RadioOption({
       htmlFor={inputId}
       className={cn(
         "flex cursor-pointer items-center justify-between gap-3 text-body",
-        disabled ? "cursor-not-allowed text-gray-60" : "text-gray-black",
+        disabled ? "cursor-not-allowed text-ink-muted" : "text-ink",
         containerClassName,
       )}
     >
@@ -36,12 +36,12 @@ export function RadioOption({
           id={inputId}
           type="radio"
           disabled={disabled}
-          className="h-4 w-4 shrink-0 accent-gray-80"
+          className="h-4 w-4 shrink-0 accent-primary"
           {...rest}
         />
         {label}
       </span>
-      {caption && <span className="text-caption text-gray-60">{caption}</span>}
+      {caption && <span className="text-caption text-ink-muted">{caption}</span>}
     </label>
   );
 }

@@ -45,7 +45,7 @@ export default function ResumenTurnoPage() {
 
         <div>
           <p className="text-h2 mb-2">Antes de tu cita</p>
-          <p className="text-body text-gray-60">
+          <p className="text-body text-ink-muted">
             Duerme bien, desayuna e hidrátate. Lleva tu documento de
             identidad.
           </p>

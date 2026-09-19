@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 /**
- * Section Header (componente "Web/Section Header"): H2 de una sección dentro
- * de la pantalla, con una acción opcional alineada a la derecha (enlace de
+ * Section Header (componente "Web/Section Header"): título de una sección
+ * dentro de la pantalla, precedido por la marca vertical vinotinto del
+ * diseño, con una acción opcional alineada a la derecha (enlace de
  * navegación con `href`, o un cambio de estado local con `onClick`, como
  * "Borrar historial" u "Ordenar por distancia").
  */
@@ -15,17 +16,26 @@ export function SectionHeader({
 }) {
   return (
     <div className="mb-4 flex items-end justify-between">
-      <h2 className="text-h2">{title}</h2>
+      <div className="flex items-center gap-4">
+        <span
+          className="block h-5 w-1 shrink-0 rounded-sm bg-primary"
+          aria-hidden="true"
+        />
+        <h2 className="text-h3">{title}</h2>
+      </div>
       {action &&
         (action.href ? (
-          <Link href={action.href} className="text-body text-gray-black hover:text-gray-60">
+          <Link
+            href={action.href}
+            className="text-caption text-primary hover:text-primary-dark"
+          >
             {action.label}
           </Link>
         ) : (
           <button
             type="button"
             onClick={action.onClick}
-            className="text-body text-gray-black hover:text-gray-60"
+            className="text-caption text-primary hover:text-primary-dark"
           >
             {action.label}
           </button>

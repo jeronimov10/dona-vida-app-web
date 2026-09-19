@@ -19,12 +19,12 @@ export function Banner({ variant = "confirmacion", title, children, className }:
     <div
       role={variant === "error" ? "alert" : "status"}
       className={cn(
-        "border border-gray-40 border-l-4 border-l-gray-black bg-gray-white p-6",
+        "rounded-xl border border-soft border-l-4 border-l-primary bg-surface p-6 shadow-card",
         className,
       )}
     >
       <p className="text-h3">{title}</p>
-      <p className="text-body mt-1 text-gray-60">{children}</p>
+      <p className="text-body mt-1 text-ink-muted">{children}</p>
     </div>
   );
 }

@@ -25,9 +25,9 @@ export default function LoginPage() {
 
   return (
     <CenteredCard>
-      <div className="border border-gray-40 p-8">
+      <div className="rounded-xl border border-soft bg-surface p-8 shadow-card">
         <p className="text-h3">Inicia sesión</p>
-        <p className="text-body mt-1 text-gray-60">
+        <p className="text-body mt-1 text-ink-muted">
           Ingresa con el correo con el que te registraste.
         </p>
 
@@ -49,7 +49,7 @@ export default function LoginPage() {
 
           <Link
             href="/recuperar-contrasena"
-            className="text-caption -mt-2 text-gray-60 hover:text-gray-black"
+            className="text-caption -mt-2 text-ink-muted hover:text-primary"
           >
             ¿Olvidaste tu contraseña?
           </Link>
@@ -61,7 +61,7 @@ export default function LoginPage() {
 
         <Divider className="my-6" />
 
-        <p className="text-body text-center text-gray-60">¿No tienes cuenta?</p>
+        <p className="text-body text-center text-ink-muted">¿No tienes cuenta?</p>
         <Button href="/registro" variant="secondary" className="mt-3 w-full">
           Crear cuenta
         </Button>

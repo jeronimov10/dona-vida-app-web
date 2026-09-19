@@ -1,5 +1,6 @@
 import { InputHTMLAttributes } from "react";
 import { cn } from "@/lib/cn";
+import { IconSearch } from "@/components/icons";
 
 export interface SearchFieldProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "className"> {
@@ -17,14 +18,14 @@ export function SearchField({
   return (
     <div
       className={cn(
-        "flex items-center gap-3 rounded-full border border-gray-40 bg-gray-white px-4 py-2",
+        "flex items-center gap-3 rounded-full border border-line bg-surface px-4 py-2",
         containerClassName,
       )}
     >
-      <span className="h-4 w-4 shrink-0 bg-gray-40" aria-hidden="true" />
+      <IconSearch className="h-5 w-5 shrink-0 text-ink-muted" />
       <input
         type="search"
-        className="w-full bg-transparent text-body text-gray-black placeholder:text-gray-60 focus:outline-none"
+        className="w-full bg-transparent text-body text-ink placeholder:text-ink-muted focus:outline-none"
         {...rest}
       />
     </div>
