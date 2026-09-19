@@ -32,7 +32,7 @@ export function Card({ title, children, action, className }: CardProps) {
             >
               {action.label}
             </Link>
-          ) : (
+          ) : action.onClick ? (
             <button
               type="button"
               onClick={action.onClick}
@@ -40,6 +40,8 @@ export function Card({ title, children, action, className }: CardProps) {
             >
               {action.label}
             </button>
+          ) : (
+            <span className="mt-4 text-body text-gray-black">{action.label}</span>
           )}
         </>
       )}
