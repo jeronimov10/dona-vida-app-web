@@ -27,7 +27,13 @@ export function Chip({ children, active, className, onClick, ...rest }: ChipProp
   }
 
   return (
-    <button type="button" onClick={onClick} className={classes} {...rest}>
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={classes}
+      {...rest}
+    >
       {children}
     </button>
   );
