@@ -15,6 +15,9 @@ import { InfoNote } from "@/components/ui/InfoNote";
 import { useAppStore } from "@/lib/store";
 import { addDays, formatDateWeekdayNoYear, formatDateWeekdayNoYearCap, todayISO } from "@/lib/format";
 import { getNoCapacityDateISO, SEED_POINTS } from "@/lib/seed";
+import {
+  IconCheckCircle,
+} from "@/components/icons";
 
 const MORNING = [
   { time: "8:00 a. m.", slots: 4 },
@@ -149,7 +152,7 @@ export default function ElegirHorarioPage() {
             </div>
           </div>
 
-          <Card
+          <Card icon={IconCheckCircle}
             title="Tu selección"
             action={{ label: "Cupo reservado mientras eliges" }}
           >

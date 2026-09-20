@@ -12,22 +12,27 @@ import { WideImage } from "@/components/ui/WideImage";
 
 export default function InicioPage() {
   return (
-    <Container className="py-12">
-      <div className="flex flex-col gap-10 sm:flex-row sm:items-center">
-        <div className="flex-1">
+    <Container className="pb-12 pt-[67px]">
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+        <div className="w-full sm:w-[636px] sm:shrink-0">
           <h1 className="text-display">Dona sangre, salva vidas</h1>
-          <p className="text-body mt-4 max-w-[480px] text-ink-muted">
+          <p className="text-body mt-[70px] max-w-[600px] text-ink-muted">
             Encuentra un punto de donación cerca de ti, revisa si puedes donar
             hoy y agenda tu turno en menos de dos minutos.
           </p>
-          <div className="mt-6 flex gap-4">
-            <Button href="/agendar">Agendar mi donación</Button>
-            <Button href="/requisitos" variant="secondary">
+          <div className="mt-[42px] flex gap-5">
+            <Button href="/agendar" className="w-[260px]">
+              Agendar mi donación
+            </Button>
+            <Button href="/requisitos" variant="secondary" className="w-[220px]">
               Ver requisitos
             </Button>
           </div>
         </div>
-        <WideImage className="h-[220px] flex-1" label="Persona donando sangre" />
+        <WideImage
+          className="h-[300px] flex-1"
+          label="Persona donando sangre"
+        />
       </div>
 
       <div className="mt-16">

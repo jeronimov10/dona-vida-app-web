@@ -11,6 +11,10 @@ import { InfoNote } from "@/components/ui/InfoNote";
 import { useAppStore } from "@/lib/store";
 import { getEligibility } from "@/lib/eligibility";
 import { formatDateLong } from "@/lib/format";
+import {
+  IconCheckCircle,
+  IconClock,
+} from "@/components/icons";
 
 export default function ProximaFechaPage() {
   const profile = useAppStore((s) => s.profile);
@@ -43,14 +47,14 @@ export default function ProximaFechaPage() {
         <div>
           <SectionHeader title="Mientras tanto" />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <Card
+            <Card icon={IconClock}
               title="Activa un recordatorio"
               action={{ label: "Activar recordatorio", href: "/mi-elegibilidad/recordatorio" }}
             >
               Te avisamos por correo el mismo día en que puedas volver a
               donar.
             </Card>
-            <Card title="Revisa los requisitos" action={{ label: "Ver requisitos", href: "/requisitos" }}>
+            <Card icon={IconCheckCircle} title="Revisa los requisitos" action={{ label: "Ver requisitos", href: "/requisitos" }}>
               Llega preparado a tu próxima cita y evita sorpresas.
             </Card>
           </div>

@@ -18,7 +18,7 @@ export function InfoNote({
   return (
     <p
       className={cn(
-        "flex items-start gap-3 rounded-[10px] border-l-4 border-primary bg-wash py-3 pl-5 pr-6 text-body text-ink-muted",
+        "flex min-h-[56px] items-center gap-3 rounded-[10px] border-l-4 border-primary bg-wash py-4 pl-5 pr-6 text-body text-ink-muted",
         className,
       )}
     >

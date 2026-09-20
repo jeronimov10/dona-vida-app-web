@@ -13,6 +13,9 @@ import { Card } from "@/components/ui/Card";
 import { InfoNote } from "@/components/ui/InfoNote";
 import { useAppStore } from "@/lib/store";
 import { SEED_POINTS } from "@/lib/seed";
+import {
+  IconInfo,
+} from "@/components/icons";
 
 export default function DetallePuntoPage() {
   const router = useRouter();
@@ -87,7 +90,7 @@ export default function DetallePuntoPage() {
             />
           </div>
 
-          <Card title="Pedir transporte" action={{ label: "Pedir transporte" }}>
+          <Card icon={IconInfo} title="Pedir transporte" action={{ label: "Pedir transporte" }}>
             Enviamos la dirección de este punto directo a tu app de
             transporte; no necesitas escribirla.
           </Card>

@@ -11,7 +11,7 @@ export interface ButtonProps
 }
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded h-12 px-6 text-button uppercase transition-colors disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex h-12 min-w-[180px] items-center justify-center gap-2 rounded px-6 text-button uppercase transition-colors disabled:cursor-not-allowed disabled:opacity-50";
 
 const VARIANTS = {
   primary: "bg-primary text-surface hover:bg-primary-dark",

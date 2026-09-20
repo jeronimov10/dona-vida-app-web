@@ -15,7 +15,7 @@ export function SectionHeader({
   action?: { label: string; href?: string; onClick?: () => void };
 }) {
   return (
-    <div className="mb-4 flex items-end justify-between">
+    <div className="mb-4 flex h-[30px] items-center justify-between">
       <div className="flex items-center gap-4">
         <span
           className="block h-5 w-1 shrink-0 rounded-sm bg-primary"

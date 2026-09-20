@@ -10,6 +10,10 @@ import { Button } from "@/components/ui/Button";
 import { InfoNote } from "@/components/ui/InfoNote";
 import { useAppStore } from "@/lib/store";
 import { formatDateWeekdayNoYear } from "@/lib/format";
+import {
+  IconCalendar,
+  IconClock,
+} from "@/components/icons";
 
 export default function TurnoCanceladoPage() {
   const lastCancelledTurno = useAppStore((s) => s.lastCancelledTurno);
@@ -36,10 +40,10 @@ export default function TurnoCanceladoPage() {
         <div>
           <SectionHeader title="¿Qué sigue?" />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <Card title="Agenda otro turno" action={{ label: "Agendar donación", href: "/agendar" }}>
+            <Card icon={IconCalendar} title="Agenda otro turno" action={{ label: "Agendar donación", href: "/agendar" }}>
               Sigues siendo elegible: puedes reservar cuando quieras.
             </Card>
-            <Card
+            <Card icon={IconClock}
               title="Activa un recordatorio"
               action={{ label: "Activar aviso", href: "/mi-elegibilidad/recordatorio" }}
             >

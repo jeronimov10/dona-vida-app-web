@@ -7,6 +7,11 @@ import { Container } from "@/components/layout/Container";
 import { Card } from "@/components/ui/Card";
 import { StatCard } from "@/components/ui/StatCard";
 import { InfoNote } from "@/components/ui/InfoNote";
+import {
+  IconCalendar,
+  IconGotaOutline,
+  IconHeart,
+} from "@/components/icons";
 import { useAppStore } from "@/lib/store";
 import { getEligibility } from "@/lib/eligibility";
 import { diffInDays, formatDateShort, formatDateWithWeekday, formatDateLong, todayISO } from "@/lib/format";
@@ -31,6 +36,7 @@ export default function PanelPage() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {turno ? (
               <Card
+                icon={IconCalendar}
                 title={turno.pointName}
                 action={{
                   label: `Faltan ${Math.max(0, diffInDays(todayISO(), turno.dateISO))} días para tu donación`,
@@ -39,11 +45,19 @@ export default function PanelPage() {
                 {formatDateWithWeekday(turno.dateISO)} · {turno.time} · {turno.address}
               </Card>
             ) : (
-              <Card title="Aún no tienes un turno" action={{ label: "Agendar donación", href: "/agendar" }}>
+              <Card
+                icon={IconCalendar}
+                title="Aún no tienes un turno"
+                action={{ label: "Agendar donación", href: "/agendar" }}
+              >
                 Agenda tu próxima donación para verla aquí.
               </Card>
             )}
-            <Card title="Recuerda" action={{ label: "Ver todas las recomendaciones", href: "/mi-turno" }}>
+            <Card
+              icon={IconHeart}
+              title="Recuerda"
+              action={{ label: "Ver todas las recomendaciones", href: "/mi-turno" }}
+            >
               Desayuna e hidrátate bien antes de tu donación. Lleva tu documento.
             </Card>
           </div>
@@ -53,16 +67,19 @@ export default function PanelPage() {
           <SectionHeader title="Tu estado como donante" />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <StatCard
+              icon={IconGotaOutline}
               label="Donaciones"
               value={String(completedDonations.length)}
               caption={mostRecent ? `Última: ${formatDateLong(mostRecent.dateISO)}` : undefined}
             />
             <StatCard
+              icon={IconGotaOutline}
               label="Elegibilidad"
               value={eligibility.isEligible ? "Elegible" : "No elegible"}
               caption={eligibility.isEligible ? "Ya puedes donar de nuevo" : `Vuelve el ${formatDateLong(eligibility.nextEligibleDateISO)}`}
             />
             <StatCard
+              icon={IconGotaOutline}
               label="Próximo turno"
               value={turno ? formatDateShort(turno.dateISO) : "Sin agendar"}
               caption={turno ? `${turno.pointName} · ${turno.time}` : "Agenda tu turno"}

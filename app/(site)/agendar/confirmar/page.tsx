@@ -8,6 +8,9 @@ import { InfoNote } from "@/components/ui/InfoNote";
 import { useAppStore } from "@/lib/store";
 import { formatDateWeekdayNoYearCap, formatDateWithWeekday, todayISO } from "@/lib/format";
 import { SEED_POINTS } from "@/lib/seed";
+import {
+  IconInfo,
+} from "@/components/icons";
 
 export default function ConfirmarTurnoPage() {
   const router = useRouter();
@@ -38,7 +41,7 @@ export default function ConfirmarTurnoPage() {
         </p>
       </div>
 
-      <Card title="Resumen de la reserva" action={{ label: "El cupo queda reservado por 10 minutos" }} className="mt-6">
+      <Card icon={IconInfo} title="Resumen de la reserva" action={{ label: "El cupo queda reservado por 10 minutos" }} className="mt-6">
         {point.name} · {formatDateWithWeekday(dateISO)} · {time}
       </Card>
 

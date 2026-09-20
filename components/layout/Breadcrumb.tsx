@@ -12,7 +12,7 @@ export interface BreadcrumbItem {
  */
 export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
   return (
-    <Container className="pt-6">
+    <Container className="pt-[17px]">
       <p className="text-caption text-ink-muted">
         {items.map((item, index) => (
           <span key={`${item.label}-${index}`}>

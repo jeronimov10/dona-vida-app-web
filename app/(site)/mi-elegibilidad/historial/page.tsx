@@ -11,6 +11,9 @@ import { Pagination } from "@/components/ui/Pagination";
 import { InfoNote } from "@/components/ui/InfoNote";
 import { useAppStore } from "@/lib/store";
 import { formatDateLong, formatThousands } from "@/lib/format";
+import {
+  IconGotaOutline,
+} from "@/components/icons";
 
 const TABS = ["Donaciones", "Todos los turnos"];
 
@@ -63,6 +66,7 @@ export default function HistorialPage() {
             <Table columns={["Fecha", "Punto de donación", "Volumen", "Estado"]} rows={rows} />
           </div>
           <StatCard
+            icon={IconGotaOutline}
             label="Total donado"
             value={`${formatThousands(totalMl)} ml`}
             caption={`En ${completed.length} donaciones completadas`}

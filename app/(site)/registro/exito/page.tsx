@@ -6,6 +6,11 @@ import { Banner } from "@/components/ui/Banner";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { useAppStore } from "@/lib/store";
+import {
+  IconCalendar,
+  IconCheckCircle,
+  IconSearch,
+} from "@/components/icons";
 
 export default function RegistroExitoPage() {
   const profile = useAppStore((s) => s.profile);
@@ -26,19 +31,19 @@ export default function RegistroExitoPage() {
       <Container className="pb-16 pt-12">
         <SectionHeader title="¿Qué sigue?" />
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          <Card
+          <Card icon={IconCheckCircle}
             title="Verifica tu elegibilidad"
             action={{ label: "Empezar", href: "/agendar/elegibilidad" }}
           >
             Un cuestionario de seis preguntas, toma menos de un minuto.
           </Card>
-          <Card
+          <Card icon={IconSearch}
             title="Busca un punto cercano"
             action={{ label: "Buscar puntos", href: "/agendar" }}
           >
             Filtra por distancia y horario de atención.
           </Card>
-          <Card
+          <Card icon={IconCalendar}
             title="Agenda tu primer turno"
             action={{ label: "Agendar", href: "/agendar" }}
           >

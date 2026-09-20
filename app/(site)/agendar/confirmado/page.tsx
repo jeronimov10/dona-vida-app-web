@@ -11,6 +11,11 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { useAppStore } from "@/lib/store";
 import { formatDateWeekdayNoYear } from "@/lib/format";
+import {
+  IconCheckCircle,
+  IconHeart,
+  IconInfo,
+} from "@/components/icons";
 
 export default function TurnoAgendadoPage() {
   const router = useRouter();
@@ -43,13 +48,13 @@ export default function TurnoAgendadoPage() {
         <div>
           <SectionHeader title="Recuerda para ese día" />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <Card title="Lleva tu documento" action={{ label: "Requisito del punto" }}>
+            <Card icon={IconCheckCircle} title="Lleva tu documento" action={{ label: "Requisito del punto" }}>
               Cédula o documento de identidad vigente y en físico.
             </Card>
-            <Card title="Desayuna antes" action={{ label: "Recomendación" }}>
+            <Card icon={IconHeart} title="Desayuna antes" action={{ label: "Recomendación" }}>
               No vayas en ayunas: come algo ligero un par de horas antes.
             </Card>
-            <Card title="Hidrátate bien" action={{ label: "Recomendación" }}>
+            <Card icon={IconInfo} title="Hidrátate bien" action={{ label: "Recomendación" }}>
               Toma agua el día anterior y también el mismo día.
             </Card>
           </div>
@@ -60,7 +65,7 @@ export default function TurnoAgendadoPage() {
           <Button variant="secondary">Agregar al calendario</Button>
         </div>
 
-        <Card title="Pedir transporte al punto" action={{ label: "Pedir transporte" }}>
+        <Card icon={IconInfo} title="Pedir transporte al punto" action={{ label: "Pedir transporte" }}>
           Enviamos la dirección de {turno.pointName} directo a tu app de
           transporte; no necesitas escribirla.
         </Card>

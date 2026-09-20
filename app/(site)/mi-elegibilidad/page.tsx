@@ -10,6 +10,11 @@ import { InfoNote } from "@/components/ui/InfoNote";
 import { useAppStore } from "@/lib/store";
 import { getEligibility } from "@/lib/eligibility";
 import { calculateAge, formatDateLong, formatDateShortYear } from "@/lib/format";
+import {
+  IconCalendar,
+  IconCheckCircle,
+  IconClock,
+} from "@/components/icons";
 
 export default function MiElegibilidadPage() {
   const profile = useAppStore((s) => s.profile);
@@ -28,16 +33,19 @@ export default function MiElegibilidadPage() {
       <Container className="flex flex-col gap-8 pb-16">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           <StatCard
+            icon={IconCheckCircle}
             label="Estado actual"
             value={eligibility.isEligible ? "Elegible" : "No elegible"}
             caption={eligibility.isEligible ? "Puedes donar hoy mismo" : `Vuelve el ${formatDateLong(eligibility.nextEligibleDateISO)}`}
           />
           <StatCard
+            icon={IconCalendar}
             label="Última donación"
             value={formatDateShortYear(profile.lastDonationDateISO)}
             caption={mostRecent ? `${mostRecent.point} · ${mostRecent.volumeMl} ml` : undefined}
           />
           <StatCard
+            icon={IconClock}
             label="Días transcurridos"
             value={String(eligibility.daysSince)}
             caption="El mínimo requerido es 90"

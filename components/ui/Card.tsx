@@ -21,7 +21,7 @@ export function Card({ title, children, action, icon: Icon, className }: CardPro
   return (
     <div
       className={cn(
-        "flex h-full flex-col rounded-xl border border-soft bg-surface p-6 shadow-card",
+        "flex h-full min-h-[180px] flex-col rounded-xl border border-soft bg-surface p-6 shadow-card",
         className,
       )}
     >

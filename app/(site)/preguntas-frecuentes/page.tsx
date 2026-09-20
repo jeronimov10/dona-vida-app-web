@@ -5,6 +5,9 @@ import { SectionHeader } from "@/components/layout/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { InfoNote } from "@/components/ui/InfoNote";
 import { SEED_FAQS } from "@/lib/seed";
+import {
+  IconInfo,
+} from "@/components/icons";
 
 export default function PreguntasFrecuentesPage() {
   return (
@@ -21,6 +24,7 @@ export default function PreguntasFrecuentesPage() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {SEED_FAQS.map((faq) => (
             <Card
+              icon={IconInfo}
               key={faq.question}
               title={faq.question}
               action={{ label: "Leer más" }}
